@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patrick E. Pereira | Atendimento Psicológico Online — CRP 12/27213</title>
+  <meta
+    name="description"
+    content="Atendimento psicológico online com abordagem psicanalítica. Psicólogo Patrick E. Pereira (CRP 12/27213). Escuta ética, sigilosa e acolhedora."
+  />
+
+  <!-- Favicon e Metadados Open Graph (Prévia ao compartilhar no WhatsApp/Redes) -->
+  <link rel="icon" type="image/png" href="assets/1.png.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Patrick E. Pereira | Atendimento Psicológico Online — CRP 12/27213" />
+  <meta
+    property="og:description"
+    content="Psicologia Clínica e Psicanálise. Um espaço de escuta ética, sigilosa e acolhedora para elaborar conflitos e construir novos sentidos."
+  />
+  <meta property="og:image" content="assets/Retrato casual em estúdio luminoso.png" />
+
+  <!-- Tipografia: Plus Jakarta Sans (clareza contemporânea) + Lora (citações e sutileza clínica) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['Lora', 'Georgia', 'serif'],
+          },
+          colors: {
+            paper: '#FAF9F7',       /* Branco-off luminoso (fundo do estúdio da foto) */
+            sand: '#F1EDE6',        /* Linho/areia suave (tom claro da calça) */
+            warmBorder: '#E3DDD3',  /* Divisórias em bege natural */
+            wine: {
+              DEFAULT: '#1B3326',   /* Verde-musgo floresta profundo (camisa da foto) */
+              hover: '#12241B',
+              soft: '#E3EBE6',
+            },
+            taupe: '#8C7A66',       /* Acento cáqui/bege quente (tom médio da calça) */
+            ink: '#1A1F1C',         /* Texto principal grafite-esverdeado escuro */
+            mutedInk: '#525A55',    /* Texto secundário equilibrado */
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-paper text-ink font-sans antialiased selection:bg-wine-soft selection:text-wine">
+
+  <!-- Cabeçalho Minimalista e Intuitivo -->
+  <header class="sticky top-0 z-50 bg-paper/95 backdrop-blur-md border-b border-warmBorder">
+    <div class="max-w-5xl mx-auto px-6 flex items-center justify-between min-h-[84px] gap-4">
+      <!-- Identidade -->
+      <a
+        href="#inicio"
+        onclick="showHome('inicio', event)"
+        class="flex items-center gap-4 group"
+        aria-label="Página inicial — Patrick E. Pereira"
+      >
+        <!-- Recorte limpo apenas do símbolo do fio em tamanho ampliado -->
+        <div class="w-20 h-12 sm:w-24 sm:h-14 overflow-hidden flex items-center justify-center shrink-0">
+          <img
+            src="assets/1.png.png"
+            data-fallbacks="assets/1.png,1.png.png,1.png,assets/1.PNG,1.PNG,https://placehold.co/160x96/FAF9F7/1B3326?text=PEP"
+            onerror="tryNextImage(this)"
+            alt="Símbolo Patrick E. Pereira Psicólogo"
+            class="w-20 h-20 sm:w-24 sm:h-24 object-cover object-[50%_42%] scale-[1.45] mix-blend-multiply brightness-[1.06] contrast-[1.18]"
+          />
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-base text-ink tracking-tight group-hover:text-wine transition-colors">
+            Patrick E. Pereira
+          </span>
+          <span class="text-xs text-mutedInk">
+            Psicólogo Clínico · CRP 12/27213
+          </span>
+        </div>
+      </a>
+
+      <!-- Botão Menu Mobile -->
+      <button
+        id="menuToggle"
+        type="button"
+        class="md:hidden flex flex-col gap-1.5 border border-warmBorder bg-white rounded-lg p-3 hover:bg-sand transition-colors"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+        aria-controls="mainNav"
+      >
+        <span class="block w-5 h-0.5 bg-ink"></span>
+        <span class="block w-5 h-0.5 bg-ink"></span>
+        <span class="block w-5 h-0.5 bg-ink"></span>
+      </button>
+
+      <!-- Navegação Enxuta -->
+      <nav
+        id="mainNav"
+        class="hidden md:flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 absolute md:static top-[84px] left-0 right-0 bg-paper md:bg-transparent border-b md:border-b-0 border-warmBorder px-6 py-5 md:p-0 shadow-lg md:shadow-none"
+      >
+        <a href="#clinica" onclick="showHome('clinica', event)" class="text-sm font-medium text-mutedInk hover:text-wine transition-colors">
+          A Clínica
+        </a>
+        <a href="#como-funciona" onclick="showHome('como-funciona', event)" class="text-sm font-medium text-mutedInk hover:text-wine transition-colors">
+          Como funciona
+        </a>
+        <a href="#sobre" onclick="showHome('sobre', event)" class="text-sm font-medium text-mutedInk hover:text-wine transition-colors">
+          Sobre mim
+        </a>
+        <button
+          type="button"
+          id="navArticlesBtn"
+          onclick="openReader(0)"
+          class="text-sm font-medium text-mutedInk hover:text-wine transition-colors cursor-pointer"
+        >
+          Artigos
+        </button>
+        <a
+          href="https://wa.me/5547992225634?text=Ol%C3%A1%2C%20Patrick!%20Gostaria%20de%20agendar%20uma%20primeira%20conversa."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center font-semibold text-sm px-4 py-2.5 rounded-lg bg-wine text-white hover:bg-wine-hover transition-colors w-full md:w-auto"
+        >
+          Agendar conversa
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- PÁGINA PRINCIPAL (ENXUTA, ACOLHEDORA E INTUITIVA)                     -->
+  <!-- ===================================================================== -->
+  <div id="homeView">
+    <main>
+      <!-- 1. HERO: Foco direto no Atendimento Psicológico Online -->
+      <section id="inicio" class="py-14 sm:py-20">
+        <div class="max-w-5xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div class="lg:col-span-7">
+            <div class="inline-flex items-center gap-2 text-xs font-semibold text-wine bg-wine-soft px-3.5 py-1.5 rounded-full mb-5">
+              <span class="w-1.5 h-1.5 rounded-full bg-wine"></span>
+              Psicologia Clínica &amp; Psicanálise · CRP 12/27213
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl font-bold text-ink leading-[1.15] tracking-tight mb-5">
+              Atendimento Psicológico Online
+            </h1>
+
+            <p class="text-base sm:text-lg text-mutedInk leading-relaxed mb-8 max-w-xl">
+              Um espaço de escuta ética, sigilosa e acolhedora para compreender suas angústias, elaborar conflitos e construir novos sentidos para a sua história.
+            </p>
+
+            <div class="flex flex-col sm:flex-row flex-wrap gap-3.5">
+              <a
+                href="https://wa.me/5547992225634?text=Ol%C3%A1%2C%20Patrick!%20Gostaria%20de%20agendar%20uma%20primeira%20conversa."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center font-semibold text-sm sm:text-base px-6 py-3.5 rounded-lg bg-wine text-white hover:bg-wine-hover transition-colors"
+              >
+                Agendar primeira conversa
+              </a>
+              <a
+                href="#como-funciona"
+                class="inline-flex items-center justify-center font-semibold text-sm sm:text-base px-6 py-3.5 rounded-lg bg-white text-ink border border-warmBorder hover:border-wine hover:text-wine transition-colors"
+              >
+                Como funcionam as sessões
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5">
+            <!-- Retrato em estúdio luminoso com enquadramento natural (4:5) -->
+            <div class="rounded-2xl overflow-hidden border border-warmBorder bg-sand shadow-sm">
+              <img
+                src="assets/foto-capa.png.png"
+                data-fallbacks="assets/foto-capa.png,assets/foto-capa.png.jpg,assets/foto-capa.jpg,assets/Retrato casual em estúdio luminoso.png,assets/Retrato casual em estúdio luminoso.png.png,assets/Retrato casual em estúdio luminoso.jpg,foto-capa.png.png,foto-capa.png,https://placehold.co/600x750/F1EDE6/1B3326?text=Patrick+E.+Pereira"
+                onerror="tryNextImage(this)"
+                alt="Psicólogo clínico Patrick E. Pereira"
+                class="w-full aspect-[4/5] object-cover object-top"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. A CLÍNICA: Quando buscar psicoterapia (objetivo e acolhedor) -->
+      <section id="clinica" class="py-16 sm:py-20 bg-sand border-y border-warmBorder">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="max-w-2xl mb-12">
+            <span class="block text-xs font-semibold uppercase tracking-widest text-taupe mb-2">
+              Escuta &amp; Elaboração
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-ink tracking-tight mb-4">
+              Quando algo pede atenção e cuidado
+            </h2>
+            <p class="text-base text-mutedInk leading-relaxed">
+              Nem sempre é fácil nomear o que incomoda. Muitas vezes, o sofrimento aparece como angústia difusa, repetição de escolhas dolorosas ou sensação de estagnação.
+            </p>
+          </div>
+
+          <!-- Demandas clínicas organizadas de forma limpa -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white border border-warmBorder rounded-2xl p-7">
+              <div class="w-10 h-10 rounded-lg bg-wine-soft text-wine flex items-center justify-center mb-5" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-ink mb-2">Sofrimento Emocional</h3>
+              <p class="text-sm text-mutedInk leading-relaxed">
+                Acolhimento para quadros de ansiedade, tristeza persistente, depressão, insegurança e sensação de vazio ou falta de sentido.
+              </p>
+            </div>
+
+            <div class="bg-white border border-warmBorder rounded-2xl p-7">
+              <div class="w-10 h-10 rounded-lg bg-wine-soft text-wine flex items-center justify-center mb-5" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-ink mb-2">Vínculos e Repetições</h3>
+              <p class="text-sm text-mutedInk leading-relaxed">
+                Compreensão de conflitos nos relacionamentos, autossabotagem, culpa recorrente e padrões que se repetem mesmo causando desgaste.
+              </p>
+            </div>
+
+            <div class="bg-white border border-warmBorder rounded-2xl p-7">
+              <div class="w-10 h-10 rounded-lg bg-wine-soft text-wine flex items-center justify-center mb-5" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-ink mb-2">Autoconhecimento</h3>
+              <p class="text-sm text-mutedInk leading-relaxed">
+                Espaço de fala livre para elaborar experiências passadas, atravessar momentos de transição e construir escolhas mais autênticas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. COMO FUNCIONA: Estrutura prática + Dúvidas Frequentes -->
+      <section id="como-funciona" class="py-16 sm:py-20">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="max-w-2xl mb-12">
+            <span class="block text-xs font-semibold uppercase tracking-widest text-taupe mb-2">
+              Funcionamento
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-ink tracking-tight mb-4">
+              Simples na logística, profundo na escuta
+            </h2>
+            <p class="text-base text-mutedInk leading-relaxed">
+              O atendimento online mantém o mesmo rigor ético e clínico do consultório presencial, com a praticidade de realizar sua sessão de onde estiver.
+            </p>
+          </div>
+
+          <!-- 3 Pilares Práticos -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-14">
+            <div class="bg-white border border-warmBorder rounded-2xl p-6">
+              <span class="text-xs font-bold text-taupe uppercase tracking-wider">Duração e Ritmo</span>
+              <h3 class="text-lg font-semibold text-ink mt-1.5 mb-2">50 minutos semanais</h3>
+              <p class="text-sm text-mutedInk leading-relaxed">
+                Encontros individuais com duração média de 50 minutos e frequência semanal, em horário combinado previamente.
+              </p>
+            </div>
+
+            <div class="bg-white border border-warmBorder rounded-2xl p-6">
+              <span class="text-xs font-bold text-taupe uppercase tracking-wider">Formato</span>
+              <h3 class="text-lg font-semibold text-ink mt-1.5 mb-2">Videochamada segura</h3>
+              <p class="text-sm text-mutedInk leading-relaxed">
+                Realizado por videochamada (WhatsApp ou plataforma combinada), com acesso prático pelo celular ou computador.
+              </p>
+            </div>
+
+            <div class="bg-white border border-warmBorder rounded-2xl p-6">
+              <span class="text-xs font-bold text-taupe uppercase tracking-wider">Ética Profissional</span>
+              <h3 class="text-lg font-semibold text-ink mt-1.5 mb-2">Sigilo absoluto</h3>
+              <p class="text-sm text-mutedInk leading-relaxed">
+                Prática regulamentada pelo Conselho Federal de Psicologia (CFP), assegurando privacidade e respeito à sua singularidade.
+              </p>
+            </div>
+          </div>
+
+          <!-- Perguntas Frequentes (Acordeão Limpo) -->
+          <div class="max-w-3xl">
+            <h3 class="text-lg font-bold text-ink mb-4">Perguntas frequentes</h3>
+            <div class="space-y-3">
+              <div class="faq-item bg-white border border-warmBorder rounded-xl overflow-hidden">
+                <button
+                  type="button"
+                  class="faq-question w-full px-5 py-4 flex items-center justify-between gap-4 text-left font-semibold text-ink text-sm sm:text-base hover:bg-sand/50 transition-colors cursor-pointer"
+                  aria-expanded="false"
+                >
+                  <span>Como é o primeiro atendimento?</span>
+                  <span class="faq-symbol text-xl text-wine font-normal">+</span>
+                </button>
+                <div class="faq-answer hidden px-5 pb-4 text-sm text-mutedInk leading-relaxed">
+                  É um primeiro encontro de acolhimento para escutar o que motivou sua busca pela terapia, esclarecer dúvidas sobre o processo e alinhar horários. Não é preciso preparar um roteiro: começamos a partir do que você desejar falar.
+                </div>
+              </div>
+
+              <div class="faq-item bg-white border border-warmBorder rounded-xl overflow-hidden">
+                <button
+                  type="button"
+                  class="faq-question w-full px-5 py-4 flex items-center justify-between gap-4 text-left font-semibold text-ink text-sm sm:text-base hover:bg-sand/50 transition-colors cursor-pointer"
+                  aria-expanded="false"
+                >
+                  <span>O que preciso preparar para a sessão online?</span>
+                  <span class="faq-symbol text-xl text-wine font-normal">+</span>
+                </button>
+                <div class="faq-answer hidden px-5 pb-4 text-sm text-mutedInk leading-relaxed">
+                  Apenas um dispositivo com câmera, microfone e internet estável, além de um local reservado onde você se sinta à vontade para falar com privacidade. O uso de fones de ouvido é recomendado.
+                </div>
+              </div>
+
+              <div class="faq-item bg-white border border-warmBorder rounded-xl overflow-hidden">
+                <button
+                  type="button"
+                  class="faq-question w-full px-5 py-4 flex items-center justify-between gap-4 text-left font-semibold text-ink text-sm sm:text-base hover:bg-sand/50 transition-colors cursor-pointer"
+                  aria-expanded="false"
+                >
+                  <span>Preciso ter um diagnóstico para iniciar a psicanálise?</span>
+                  <span class="faq-symbol text-xl text-wine font-normal">+</span>
+                </button>
+                <div class="faq-answer hidden px-5 pb-4 text-sm text-mutedInk leading-relaxed">
+                  Não. A psicanálise acolhe tanto quem atravessa um sofrimento agudo quanto quem deseja compreender melhor seus conflitos, relacionamentos e escolhas de vida.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. SOBRE MIM: Apresentação direta e sem excessos -->
+      <section id="sobre" class="py-16 sm:py-20 bg-sand border-y border-warmBorder">
+        <div class="max-w-5xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div class="lg:col-span-5">
+            <img
+              src="assets/Retrato Minimalista com Goatee e Tatuagens.jpg"
+              data-fallbacks="Retrato Minimalista com Goatee e Tatuagens.jpg,assets/Retrato%20Minimalista%20com%20Goatee%20e%20Tatuagens.jpg,assets/sobre.jpg,https://placehold.co/640x480/FFFFFF/1B3326?text=Patrick+E.+Pereira"
+              onerror="tryNextImage(this)"
+              alt="Patrick E. Pereira — Psicólogo Clínico"
+              class="w-full aspect-[4/3] rounded-2xl border border-warmBorder object-cover object-center shadow-sm"
+            />
+          </div>
+
+          <div class="lg:col-span-7">
+            <span class="block text-xs font-semibold uppercase tracking-widest text-taupe mb-2">
+              Sobre o Profissional
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-ink tracking-tight mb-5">
+              Patrick E. Pereira
+            </h2>
+
+            <div class="space-y-4 text-base text-mutedInk leading-relaxed">
+              <p>
+                Sou psicólogo clínico (<strong class="text-ink">CRP 12/27213</strong>), graduado em Psicologia pelo <strong class="text-ink">Centro Universitário Leonardo da Vinci (UNIASSELVI)</strong> e pós-graduado em Psicanálise Clínica pela <strong class="text-ink">Pontifícia Universidade Católica do Paraná (PUCPR)</strong>.
+              </p>
+              <p>
+                Dedico-me à prática clínica e ao estudo contínuo da Psicanálise e das questões existenciais que atravessam a experiência humana — as angústias, incertezas e impasses próprios de cada trajetória.
+              </p>
+              <p>
+                Meu trabalho orienta-se pelo respeito profundo à singularidade de cada pessoa, oferecendo uma escuta atenta, ética e sigilosa para que você possa elaborar suas experiências e transformar sua relação consigo mesmo.
+              </p>
+            </div>
+
+            <!-- Credenciais Objetivas -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 pt-6 border-t border-warmBorder">
+              <div>
+                <span class="block text-xs text-mutedInk mb-0.5">Registro</span>
+                <strong class="text-sm text-ink">CRP 12/27213</strong>
+              </div>
+              <div>
+                <span class="block text-xs text-mutedInk mb-0.5">Especialização</span>
+                <strong class="text-sm text-ink">Psicanálise Clínica (PUCPR)</strong>
+              </div>
+              <div>
+                <span class="block text-xs text-mutedInk mb-0.5">Atendimento</span>
+                <strong class="text-sm text-ink">Online (Brasil e Exterior)</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. ESCRITOS E REFLEXÕES -->
+      <section id="artigos" class="py-16 sm:py-20">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+            <div>
+              <span class="block text-xs font-semibold uppercase tracking-widest text-taupe mb-2">
+                Escritos &amp; Reflexões
+              </span>
+              <h2 class="text-2xl sm:text-3xl font-bold text-ink tracking-tight">
+                Artigos sobre clínica e subjetividade
+              </h2>
+            </div>
+            <button
+              type="button"
+              onclick="openReader(0)"
+              class="text-sm font-semibold text-wine hover:underline self-start sm:self-auto cursor-pointer"
+            >
+              Abrir sala de leitura &rarr;
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <article
+              onclick="openReader(0)"
+              class="group bg-white border border-warmBorder hover:border-wine rounded-2xl p-7 flex flex-col justify-between transition-all cursor-pointer"
+            >
+              <div>
+                <span class="inline-block text-xs font-semibold text-wine bg-wine-soft px-3 py-1 rounded-full mb-4">
+                  Terapia Online
+                </span>
+                <h3 class="text-lg font-semibold text-ink group-hover:text-wine transition-colors mb-2.5">
+                  Como funcionam os atendimentos online?
+                </h3>
+                <p class="text-sm text-mutedInk leading-relaxed">
+                  Entenda a duração das sessões, o primeiro encontro, as garantias de sigilo e a regulamentação profissional.
+                </p>
+              </div>
+              <span class="mt-6 inline-block text-sm font-semibold text-wine">
+                Ler texto &rarr;
+              </span>
+            </article>
+
+            <article
+              onclick="openReader(1)"
+              class="group bg-white border border-warmBorder hover:border-wine rounded-2xl p-7 flex flex-col justify-between transition-all cursor-pointer"
+            >
+              <div>
+                <span class="inline-block text-xs font-semibold text-wine bg-wine-soft px-3 py-1 rounded-full mb-4">
+                  Psicanálise
+                </span>
+                <h3 class="text-lg font-semibold text-ink group-hover:text-wine transition-colors mb-2.5">
+                  O que é e como funciona a psicanálise?
+                </h3>
+                <p class="text-sm text-mutedInk leading-relaxed">
+                  Como a escuta psicanalítica investiga processos inconscientes e ajuda a ressignificar padrões do presente.
+                </p>
+              </div>
+              <span class="mt-6 inline-block text-sm font-semibold text-wine">
+                Ler texto &rarr;
+              </span>
+            </article>
+
+            <article
+              onclick="openReader(2)"
+              class="group bg-white border border-warmBorder hover:border-wine rounded-2xl p-7 flex flex-col justify-between transition-all cursor-pointer"
+            >
+              <div>
+                <span class="inline-block text-xs font-semibold text-wine bg-wine-soft px-3 py-1 rounded-full mb-4">
+                  Existência
+                </span>
+                <h3 class="text-lg font-semibold text-ink group-hover:text-wine transition-colors mb-2.5">
+                  Essência, um vazio dentro de mim
+                </h3>
+                <p class="text-sm text-mutedInk leading-relaxed">
+                  Uma reflexão inspirada em Erich Fromm sobre ter e ser, o vazio constitutivo do desejo e nossas inclinações próprias.
+                </p>
+              </div>
+              <span class="mt-6 inline-block text-sm font-semibold text-wine">
+                Ler texto &rarr;
+              </span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. CONVITE FINAL (CTA Calmo e Direto) -->
+      <section class="pb-16 sm:pb-20">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="bg-wine text-white rounded-2xl p-8 sm:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-bold mb-2">
+                Dê o primeiro passo no seu tempo
+              </h2>
+              <p class="text-white/85 text-base max-w-xl leading-relaxed">
+                Caso tenha dúvidas sobre o atendimento ou queira verificar horários disponíveis, envie uma mensagem diretamente pelo WhatsApp.
+              </p>
+            </div>
+            <a
+              href="https://wa.me/5547992225634?text=Ol%C3%A1%2C%20Patrick!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20e%20agendamento."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center font-semibold text-sm sm:text-base px-6 py-3.5 rounded-lg bg-white text-wine hover:bg-wine-soft transition-colors shrink-0"
+            >
+              WhatsApp · (47) 99222-5634
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- SALA DE LEITURA DOS ARTIGOS (FOCO TOTAL + LINK DIRETO COMPARTILHÁVEL) -->
+  <!-- ===================================================================== -->
+  <div id="readerView" class="hidden">
+    <main class="py-10 sm:py-16">
+      <div class="max-w-3xl mx-auto px-6">
+        <!-- Barra Superior de Navegação da Leitura -->
+        <div class="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 border-b border-warmBorder">
+          <div class="flex items-center gap-4">
+            <button
+              type="button"
+              onclick="showHome('artigos')"
+              class="inline-flex items-center gap-2 text-sm font-semibold text-wine hover:underline cursor-pointer"
+            >
+              &larr; Voltar ao site
+            </button>
+
+            <button
+              type="button"
+              onclick="copyArticleLink()"
+              class="inline-flex items-center gap-1.5 text-xs font-medium text-mutedInk hover:text-wine border border-warmBorder bg-white px-3 py-1.5 rounded-lg transition-colors cursor-pointer"
+              title="Copiar link direto deste artigo"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+              </svg>
+              <span id="copyLinkLabel">Copiar link</span>
+            </button>
+          </div>
+
+          <!-- Seletor de Artigos -->
+          <div class="flex flex-wrap gap-2" role="tablist" aria-label="Escolher artigo">
+            <button
+              type="button"
+              onclick="selectArticle(0)"
+              id="tabBtn0"
+              class="article-tab text-xs font-semibold px-3 py-1.5 rounded-full border transition-colors cursor-pointer"
+            >
+              Atendimento Online
+            </button>
+            <button
+              type="button"
+              onclick="selectArticle(1)"
+              id="tabBtn1"
+              class="article-tab text-xs font-semibold px-3 py-1.5 rounded-full border transition-colors cursor-pointer"
+            >
+              Psicanálise
+            </button>
+            <button
+              type="button"
+              onclick="selectArticle(2)"
+              id="tabBtn2"
+              class="article-tab text-xs font-semibold px-3 py-1.5 rounded-full border transition-colors cursor-pointer"
+            >
+              Essência &amp; Vazio
+            </button>
+          </div>
+        </div>
+
+        <!-- ARTIGO 0: Como funcionam os atendimentos online? -->
+        <article id="articlePanel0" class="article-panel">
+          <header class="mb-8">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-xs font-semibold text-wine bg-wine-soft px-3 py-1 rounded-full">
+                Terapia Online
+              </span>
+              <span class="text-xs text-mutedInk">3 min de leitura</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-bold text-ink leading-tight">
+              Como funcionam os atendimentos online?
+            </h1>
+          </header>
+
+          <div class="space-y-5 text-base sm:text-[17px] text-mutedInk leading-relaxed">
+            <p>
+              A psicoterapia online é uma modalidade de atendimento psicológico realizada à distância, por meio de videochamadas, que oferece praticidade, flexibilidade de horários e a mesma seriedade clínica do consultório físico.
+            </p>
+            <p>
+              Cada vez mais consolidada na prática clínica contemporânea, essa modalidade permite que o encontro entre psicólogo e paciente aconteça de forma remota, mantendo a estrutura das sessões presenciais — com duração média de <strong class="text-ink">50 minutos</strong> e frequência geralmente semanal.
+            </p>
+            <p>
+              Para participar da sessão, você pode estar em qualquer lugar onde tenha um dispositivo com acesso estável à internet. Ainda assim, recomenda-se escolher um ambiente tranquilo e reservado, garantindo o sigilo da conversa e o conforto necessário para falar sobre questões íntimas ou delicadas.
+            </p>
+
+            <h2 class="text-xl font-bold text-ink pt-4">Como será o primeiro atendimento?</h2>
+            <p>
+              O primeiro encontro tem como foco acolher o que motivou sua busca pela terapia, esclarecer dúvidas sobre o funcionamento do processo e alinhar questões práticas, como horários e frequência. Não é preciso ter um roteiro pronto: o espaço é construído gradualmente a partir da sua fala.
+            </p>
+            <p>
+              Na psicoterapia online, o profissional segue rigorosamente as mesmas normas éticas que regem o atendimento presencial — incluindo o sigilo absoluto das informações compartilhadas, o respeito à autonomia do paciente e a manutenção de um ambiente seguro e acolhedor, sem a necessidade de longos deslocamentos até o consultório.
+            </p>
+
+            <h2 class="text-xl font-bold text-ink pt-4">Pontos importantes sobre os atendimentos online</h2>
+            <ol class="list-decimal pl-5 space-y-3">
+              <li>
+                <strong class="text-ink">Plataformas de videochamada:</strong> As sessões são realizadas por meio de aplicativos de videoconferência, como o WhatsApp, permitindo conversar em tempo real com interação visual e auditiva clara.
+              </li>
+              <li>
+                <strong class="text-ink">Flexibilidade de horários:</strong> Sem o tempo gasto no trânsito, o paciente pode agendar suas sessões em horários mais compatíveis com a própria rotina.
+              </li>
+              <li>
+                <strong class="text-ink">Confidencialidade e segurança:</strong> As ferramentas utilizadas contam com criptografia e proteção de dados. Além disso, é fundamental que tanto o psicólogo quanto o paciente estejam em locais privados durante o atendimento.
+              </li>
+              <li>
+                <strong class="text-ink">Acesso ampliado:</strong> A modalidade remota permite que pessoas em cidades sem oferta especializada, com rotina intensa ou com dificuldades de locomoção tenham acesso ao acompanhamento psicológico — sendo também uma alternativa valiosa para brasileiros que moram no exterior e desejam ser atendidos em português.
+              </li>
+              <li>
+                <strong class="text-ink">Regulamentação profissional:</strong> No Brasil, o atendimento psicológico online é regulamentado pelo Conselho Federal de Psicologia (CFP), que estabelece diretrizes específicas para assegurar a qualidade técnica e a ética da prática clínica.
+              </li>
+            </ol>
+          </div>
+        </article>
+
+        <!-- ARTIGO 1: O que é e como funciona a psicanálise? -->
+        <article id="articlePanel1" class="article-panel hidden">
+          <header class="mb-8">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-xs font-semibold text-wine bg-wine-soft px-3 py-1 rounded-full">
+                Psicanálise
+              </span>
+              <span class="text-xs text-mutedInk">4 min de leitura</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-bold text-ink leading-tight">
+              O que é e como funciona a psicanálise?
+            </h1>
+          </header>
+
+          <div class="space-y-5 text-base sm:text-[17px] text-mutedInk leading-relaxed">
+            <blockquote class="bg-sand border-l-4 border-taupe rounded-r-xl p-5 my-6">
+              <p class="font-serif italic text-ink mb-2">
+                “A psicanálise nos ensina que o passado está presente em tudo o que fazemos, e que compreender o passado é essencial para mudar o futuro.”
+              </p>
+              <cite class="not-italic text-xs font-semibold uppercase tracking-wider text-taupe">— Melanie Klein</cite>
+            </blockquote>
+
+            <h2 class="text-xl font-bold text-ink pt-2">O que é a psicanálise?</h2>
+            <p>
+              A psicanálise é uma abordagem clínica desenvolvida por Sigmund Freud que tem como objetivo ajudar o paciente a identificar a relação entre aspectos inconscientes e os sentimentos, traumas, pensamentos e comportamentos que influenciam sua vida.
+            </p>
+            <p>
+              Esses conteúdos inconscientes são marcas e experiências do passado que continuam operando no presente. Muitas vezes, perguntamo-nos por que nos relacionamos sempre com determinado perfil de pessoa, por que nos autossabotamos, sentimos culpa recorrente, enfrentamos crises de ansiedade em certas situações ou repetimos padrões que sabemos ser prejudiciais. Essas reações, aparentemente sem motivo imediato, encontram sentido nos processos inconscientes formados a partir da nossa história e da maneira como cada vivência foi assimilada.
+            </p>
+            <p>
+              À medida que esses traços são reconhecidos, torna-se possível perceber como muitas atitudes e modos de pensar atuais se articulam a acontecimentos anteriores que deixaram marcas na vida adulta. Esse trabalho permite ressignificar experiências passadas e elaborar o que hoje gera sofrimento.
+            </p>
+            <p>
+              Embora dê grande importância à história do sujeito, a psicanálise não se limita ao passado: ela busca compreender como essas vivências afetam o presente, possibilitando alívio dos sintomas e escolhas mais conscientes. Ao integrar passado e presente, favorece uma compreensão mais profunda de si e promove o bem-estar psíquico.
+            </p>
+
+            <h2 class="text-xl font-bold text-ink pt-4">Como funciona a psicanálise?</h2>
+            <p>
+              Durante as sessões, o paciente é convidado a falar livremente sobre tudo o que lhe passa à mente: os acontecimentos do cotidiano, seus sentimentos, a relação consigo mesmo e com os outros, suas angústias, afetos, inseguranças, medos e conflitos atuais.
+            </p>
+            <p>
+              No decorrer dos atendimentos, com a escuta e as intervenções do psicoterapeuta, o paciente entra em contato com conteúdos inconscientes que orientam sua forma de pensar, sentir e agir. Com o tempo, passa-se a construir um conhecimento mais profundo sobre si mesmo, identificando a raiz dos conflitos e elaborando saídas próprias para eles.
+            </p>
+
+            <h2 class="text-xl font-bold text-ink pt-4">Principais indicações</h2>
+            <p>
+              A psicanálise pode auxiliar na elaboração de diversas questões emocionais e psíquicas, sendo indicada para pessoas que enfrentam:
+            </p>
+            <ul class="list-disc pl-5 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
+              <li>Sensação de inadequação e isolamento;</li>
+              <li>Baixa autoestima;</li>
+              <li>Conflitos interpessoais;</li>
+              <li>Insatisfação com a vida;</li>
+              <li>Depressão;</li>
+              <li>Ansiedade;</li>
+              <li>Fobias;</li>
+              <li>Estresse pós-traumático;</li>
+              <li>Crises de pânico;</li>
+              <li>Questões na vida sexual;</li>
+              <li>Transtornos alimentares;</li>
+              <li>Compulsões e dependências.</li>
+            </ul>
+            <p class="pt-2">
+              Além disso, a psicanálise não se destina apenas a quem atravessa um quadro agudo de sofrimento psíquico: ela também é procurada por quem deseja aprofundar o autoconhecimento e construir uma relação mais autêntica e saudável com a própria vida.
+            </p>
+          </div>
+        </article>
+
+        <!-- ARTIGO 2: Essência, um vazio dentro de mim -->
+        <article id="articlePanel2" class="article-panel hidden">
+          <header class="mb-8">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-xs font-semibold text-wine bg-wine-soft px-3 py-1 rounded-full">
+                Psicanálise &amp; Existência
+              </span>
+              <span class="text-xs text-mutedInk">4 min de leitura</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-bold text-ink leading-tight">
+              Essência, um vazio dentro de mim
+            </h1>
+          </header>
+
+          <div class="space-y-5 text-base sm:text-[17px] text-mutedInk leading-relaxed">
+            <p>
+              Entendida como algo original de nossa personalidade — expressão de autenticidade e de gostos pessoais por excentricidades e simplicidades —, nossa essência costuma ser associada aos momentos de expressão irreverente acompanhados de alegria e bem-estar. Uma conversa com alguém querido, uma música que emociona, um passeio ao pôr do sol, uma noite de diversão e bebidas, um livro que põe palavras em experiências íntimas. Reconectamo-nos com essa sensação por meio de atividades prazerosas que fluem naturalmente, sem esforço ou comedimento de palavras: <em class="font-serif text-ink">“Eu sou assim, é o meu jeito, assim me divirto e sou feliz — essa é a minha essência”</em>.
+            </p>
+            <p>
+              Não é raro ouvir a queixa de quem gostaria de “voltar a ser como antes” — uma sensação que expressa a perda de algo valioso, não de um objeto, mas de uma parte de si. Voltar a ser, como se em algum momento tivéssemos nos desconectado da própria essência e deixado de sê-lo, passando a acreditar de forma verdadeira que algo no interior do nosso ser se perdeu, enquanto nutrimos a esperança de reencontrá-lo.
+            </p>
+            <p>
+              Entretanto, pergunto-me: existe mesmo uma essência? Inspirado pelo livro <em>Ter ou Ser?</em>, de Erich Fromm, tendo a responder que não existe uma essência fixa, e sim inclinações que, quando realizadas, convergem para o bem-estar e para sensações de conexão e felicidade. Isso significa dizer que, na realidade, não perdemos nada e não há algo que nos falte. O anseio por um reencontro com quem imaginamos ter sido no passado é, na verdade, a busca por dar vazão às nossas inclinações — àquilo que nos gera satisfação e que costumamos confundir com um estado de completude plena.
+            </p>
+            <p>
+              Pensemos agora na diferença entre <strong class="text-ink">ter</strong> e <strong class="text-ink">ser</strong>, com base nas reflexões de Erich Fromm. Enquanto o modo <em>ter</em> sugere o movimento de adquirir e usufruir de objetos e pessoas — buscando cessar a sensação de falta e alimentar o ego para sentir-se completo —, o modo <em>ser</em> sugere diluir-se nas experiências, em um esquecimento de si mesmo e em uma abertura genuína para conectar-se com o mundo e com os outros.
+            </p>
+            <p>
+              Erich Fromm escreve que <em class="font-serif text-ink">“a satisfação irrestrita de todos os desejos não conduz ao bem-estar, nem é o caminho para a felicidade ou mesmo para o prazer máximo”</em> (1976, p. 16). Então, qual seria o caminho para o bem-estar? Vivemos em um momento em que propagandas são exibidas de modo personalizado com base no histórico de busca de cada usuário. Produtos, sonhos, estilos de vida e experiências pessoais e sociais são oferecidos acompanhados de promessas de realização; ironicamente, acreditamos nelas, e a compra é feita ou o impulso de realizá-la se instaura. Mais tarde, percebe-se que, após o regozijo de ter o bem nas mãos, o sentimento de incompletude retorna e permanece, sinalizando um espaço vazio que nos move a tentar preenchê-lo. Esse sentimento é a própria consciência da experiência do desejo: somos seres essencialmente desejantes, e a marca dessa condição é justamente a vivência de um vazio interior.
+            </p>
+            <p>
+              Estaremos fadados à insatisfação, sendo a resignação a única saída diante dessa condição? É um pensamento possível e válido — no entanto, infeliz. Mesmo diante de uma estrutura desejante que produz o sentimento de incompletude, é possível encontrar um caminho para o bem-estar. Ele começa pela conscientização do vazio e da falta, pela aceitação da impossibilidade da completude e pelo reconhecimento dos próprios desejos.
+            </p>
+            <p>
+              Aqui, torna-se importante fazer uma diferenciação: os <strong class="text-ink">próprios desejos</strong> são nossas inclinações pessoais, lazeres, produções e encontros que nos geram deleite diante da vida — ao contrário dos desejos fabricados e vendidos pelos meios de comunicação, que formam o que chamo de <strong class="text-ink">desejos artificiais</strong>, desprovidos de um vínculo afetivo profundo. Por fim, conectar-se aos próprios desejos e dar vazão às inclinações pessoais não garante a completude nem o preenchimento definitivo do vazio, mas torna a experiência de vida mais autêntica e leve — permitindo que o bem-estar se faça presente com muito mais frequência no cotidiano.
+            </p>
+          </div>
+        </article>
+
+        <!-- Convite Discreto ao Final da Leitura -->
+        <div class="bg-sand border border-warmBorder rounded-2xl p-6 sm:p-8 mt-12">
+          <p class="text-ink font-medium mb-4">
+            Gostaria de conversar sobre alguma dessas questões ou agendar uma sessão online?
+          </p>
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <a
+              href="https://wa.me/5547992225634?text=Ol%C3%A1%2C%20Patrick!%20Li%20um%20artigo%20no%20seu%20site%20e%20gostaria%20de%20conversar."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center font-semibold text-sm px-5 py-3 rounded-lg bg-wine text-white hover:bg-wine-hover transition-colors"
+            >
+              Conversar pelo WhatsApp
+            </a>
+            <button
+              type="button"
+              id="nextArticleBtn"
+              onclick="nextArticle()"
+              class="text-sm font-semibold text-wine hover:underline cursor-pointer"
+            >
+              Ler próximo artigo &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Rodapé Minimalista com Logotipo Completo -->
+  <footer class="border-t border-warmBorder py-8 bg-paper">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-sm text-mutedInk">
+      <div class="flex items-center gap-4">
+        <img
+          src="assets/1.png.png"
+          data-fallbacks="assets/1.png,1.png.png,1.png,assets/1.PNG,1.PNG"
+          onerror="tryNextImage(this, true)"
+          alt="Patrick E. Pereira Psicólogo"
+          class="w-24 h-24 object-contain mix-blend-multiply brightness-[1.06] contrast-[1.18]"
+        />
+        <div>
+          <strong class="text-ink block">Patrick E. Pereira</strong>
+          <span>Psicólogo Clínico · CRP 12/27213</span>
+        </div>
+      </div>
+      <div class="flex flex-wrap items-center gap-5">
+        <a href="https://wa.me/5547992225634" target="_blank" rel="noopener noreferrer" class="hover:text-wine transition-colors">
+          WhatsApp: (47) 99222-5634
+        </a>
+        <span>&copy; <span id="currentYear"></span></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botão Flutuante Discreto de WhatsApp -->
+  <a
+    href="https://wa.me/5547992225634?text=Ol%C3%A1%2C%20Patrick!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
+    target="_blank"
+    rel="noopener noreferrer"
+    class="fixed right-5 bottom-5 p-3.5 rounded-full bg-wine text-white flex items-center justify-center shadow-md hover:bg-wine-hover hover:-translate-y-0.5 transition-all z-40"
+    aria-label="Entrar em contato pelo WhatsApp"
+    title="Conversar pelo WhatsApp"
+  >
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+    </svg>
+  </a>
+
+  <!-- Lógica de Navegação, Leitor de Artigos e Acordeão -->
+  <script>
+    // Tenta carregar variações de caminho e extensão caso o arquivo tenha sido salvo com extensão dupla ou na raiz
+    function tryNextImage(img, hideIfAllFail) {
+      const list = (img.dataset.fallbacks || '').split(',').filter(Boolean);
+      const step = parseInt(img.dataset.step || '0', 10);
+      if (step < list.length) {
+        img.dataset.step = String(step + 1);
+        img.src = list[step];
+      } else {
+        img.onerror = null;
+        if (hideIfAllFail) {
+          img.style.display = 'none';
+        }
+      }
+    }
+
+    const homeView = document.getElementById('homeView');
+    const readerView = document.getElementById('readerView');
+    const navArticlesBtn = document.getElementById('navArticlesBtn');
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    const ARTICLE_SLUGS = [
+      'artigo-atendimento-online',
+      'artigo-psicanalise',
+      'artigo-essencia-vazio'
+    ];
+    let currentArticleIndex = 0;
+
+    function closeMobileMenu() {
+      if (mainNav && menuToggle) {
+        mainNav.classList.add('hidden');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    // Alterna para a Página Principal e limpa o hash de artigo
+    function showHome(sectionId, event) {
+      if (event) event.preventDefault();
+      closeMobileMenu();
+
+      homeView.classList.remove('hidden');
+      readerView.classList.add('hidden');
+      if (navArticlesBtn) {
+        navArticlesBtn.classList.remove('text-wine', 'font-semibold');
+      }
+
+      if (window.history && window.history.replaceState) {
+        const targetHash = sectionId && sectionId !== 'inicio' ? '#' + sectionId : window.location.pathname;
+        window.history.replaceState(null, '', targetHash);
+      }
+
+      if (sectionId) {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+          return;
+        }
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Seleciona um artigo específico dentro da Sala de Leitura e atualiza a URL compartilhável
+    function selectArticle(index) {
+      currentArticleIndex = index;
+      const panels = document.querySelectorAll('.article-panel');
+      const tabs = document.querySelectorAll('.article-tab');
+
+      panels.forEach((panel, i) => {
+        panel.classList.toggle('hidden', i !== index);
+      });
+
+      tabs.forEach((tab, i) => {
+        if (i === index) {
+          tab.classList.add('bg-wine', 'text-white', 'border-wine');
+          tab.classList.remove('bg-white', 'text-mutedInk', 'border-warmBorder');
+        } else {
+          tab.classList.remove('bg-wine', 'text-white', 'border-wine');
+          tab.classList.add('bg-white', 'text-mutedInk', 'border-warmBorder');
+        }
+      });
+
+      if (window.history && window.history.replaceState && ARTICLE_SLUGS[index]) {
+        window.history.replaceState(null, '', '#' + ARTICLE_SLUGS[index]);
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Abre a Sala de Leitura no artigo escolhido
+    function openReader(index) {
+      closeMobileMenu();
+      homeView.classList.add('hidden');
+      readerView.classList.remove('hidden');
+      if (navArticlesBtn) {
+        navArticlesBtn.classList.add('text-wine', 'font-semibold');
+      }
+      selectArticle(index || 0);
+    }
+
+    // Avança para o próximo artigo
+    function nextArticle() {
+      const nextIdx = (currentArticleIndex + 1) % 3;
+      selectArticle(nextIdx);
+    }
+
+    // Copia o link direto do artigo aberto (compatível com iFrames e navegadores)
+    function copyArticleLink() {
+      const url = window.location.href;
+      const label = document.getElementById('copyLinkLabel');
+      const tempInput = document.createElement('input');
+      tempInput.value = url;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        document.execCommand('copy');
+        if (label) {
+          label.textContent = 'Link copiado!';
+          setTimeout(() => {
+            label.textContent = 'Copiar link';
+          }, 2200);
+        }
+      } catch (err) {
+        if (label) label.textContent = 'Erro ao copiar';
+      }
+      document.body.removeChild(tempInput);
+    }
+
+    // Abre automaticamente um artigo caso o visitante acesse pelo link direto (#artigo-...)
+    function handleInitialRoute() {
+      const hash = window.location.hash.replace('#', '');
+      const slugIndex = ARTICLE_SLUGS.indexOf(hash);
+      if (slugIndex !== -1) {
+        openReader(slugIndex);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Ano atual no rodapé
+      const yearSpan = document.getElementById('currentYear');
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+
+      // Verifica se o link já aponta para um artigo específico
+      handleInitialRoute();
+      window.addEventListener('hashchange', handleInitialRoute);
+
+      // Menu mobile
+      if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', () => {
+          const isHidden = mainNav.classList.toggle('hidden');
+          menuToggle.setAttribute('aria-expanded', String(!isHidden));
+        });
+      }
+
+      // Acordeão de Perguntas Frequentes
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach((item) => {
+        const button = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        const symbol = item.querySelector('.faq-symbol');
+
+        button.addEventListener('click', () => {
+          const isOpen = !answer.classList.contains('hidden');
+
+          faqItems.forEach((other) => {
+            other.querySelector('.faq-answer').classList.add('hidden');
+            other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            other.querySelector('.faq-symbol').textContent = '+';
+          });
+
+          if (!isOpen) {
+            answer.classList.remove('hidden');
+            button.setAttribute('aria-expanded', 'true');
+            symbol.textContent = '−';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
